@@ -7,6 +7,8 @@ export const user: User = {
   cover:
     "https://img.freepik.com/fotos-gratis/conceito-de-viagem-completo-com-pontos-de-referencia_23-2149153258.jpg",
   bio: "Desenvolvedor fullstack há mais de 10 anos.",
-  link: "diogojrc.dev.br",
+  link: "http://diogojrc.dev.br",
   postCount: 18,
+  following: 32,
+  followers: 65827,
 };
