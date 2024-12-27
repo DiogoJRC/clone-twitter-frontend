@@ -11,9 +11,10 @@ import { useState } from "react";
 
 type Props = {
   post: Post;
+  hideComments?: boolean;
 };
 
-export const PostItem = ({ post }: Props) => {
+export const PostItem = ({ post, hideComments }: Props) => {
   const [shared, setShared] = useState(post.shared);
   const [shareCount, setShareCount] = useState(post.shareCount);
   const [liked, setLiked] = useState(post.liked);
@@ -63,11 +64,17 @@ export const PostItem = ({ post }: Props) => {
         {post.image && (
           <img className="w-full rounded-2xl mb-4" src={post.image} alt="" />
         )}
-        <div className="w-3/4 flex items-center justify-between text-gray-500">
-          <Link href={`/post/${post.id}`} className="flex items-center gap-2">
-            <FontAwesomeIcon icon={faComment} className="size-6" />{" "}
-            {post.commentCount}
-          </Link>
+        <div
+          className={`${
+            hideComments ? "w-2/4" : "w-3/4"
+          } flex items-center justify-between text-gray-500`}
+        >
+          {!hideComments && (
+            <Link href={`/post/${post.id}`} className="flex items-center gap-2">
+              <FontAwesomeIcon icon={faComment} className="size-6" />{" "}
+              {post.commentCount}
+            </Link>
+          )}
           <a
             href="#"
             className={`flex items-center gap-2 ${shared && "text-green-400"}`}
